@@ -1,0 +1,14 @@
+{
+  "name": "pokedex-api",
+  "version": "0.0.1",
+  "description": "A Pokedex API created consuming PokeApi v2 (https://pokeapi.co/api/v2).",
+  "scripts": {
+    "start": "serverless deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rodrigo Cavassan Martins",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
