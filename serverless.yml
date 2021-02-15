@@ -25,10 +25,17 @@ custom:
     includeModules: true
 
 functions:
-  pokemons:
+  listPokemons:
     handler: pokemons/PokemonsController.list
     events:
       - http:
           path: pokemons
+          method: get
+          cors: true
+  readPokemon:
+    handler: pokemons/PokemonsController.read
+    events:
+      - http:
+          path: pokemons/{id}
           method: get
           cors: true

@@ -1,14 +1,9 @@
 import axios from 'axios';
 
+import Pokemon from './Pokemon';
+
 const toPokemonRequest = (pokemon) => axios.get(pokemon.url);
-const toPokemon = (pokemonResponse) => {
-  const { data: {
-    id,
-    name,
-    sprites: { front_default: image },
-  } } = pokemonResponse;
-  return { id, image, name };
-};
+const toPokemon = ({ data }) => new Pokemon(data);
 const mapToPokemons = (pokemonsResponses) => pokemonsResponses.map(toPokemon);
 
 export default {
@@ -19,6 +14,15 @@ export default {
       const { data: { results: pokemons } } = await axios.get(url, config);
       const pokemonsRequests = pokemons.map(toPokemonRequest);
       return axios.all(pokemonsRequests).then(mapToPokemons);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  },
+  async read(id) {
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    try {
+      const response = await axios.get(url);
+      return Promise.resolve(toPokemon(response));
     } catch (error) {
       return Promise.reject(error);
     }
