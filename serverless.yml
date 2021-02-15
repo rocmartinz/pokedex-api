@@ -13,11 +13,20 @@ provider:
   runtime: nodejs14.x
   region: sa-east-1
 
-# The `functions` block defines what code to deploy
+plugins:
+  - serverless-webpack
+
+package:
+  individually: true
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js 
+    includeModules: true
+
 functions:
-  helloWorld:
-    handler: pokemons/pokemons-controller.list
-    # The `events` block defines how to trigger the handler.helloWorld code
+  pokemons:
+    handler: pokemons/PokemonsController.list
     events:
       - http:
           path: pokemons
