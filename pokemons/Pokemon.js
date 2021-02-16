@@ -6,7 +6,7 @@ export default class Pokemon {
   }) {
     this.id = id;
     this.name = name;
-    this.image = `https://img.pokemondb.net/artwork/${name}.jpg`;
+    this.image = `https://img.pokemondb.net/sprites/home/normal/${name}.png`;
     this.types = types.map((type) => type.type.name);
   }
 }
