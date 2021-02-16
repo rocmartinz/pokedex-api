@@ -2,10 +2,11 @@ export default class Pokemon {
   constructor({
     id,
     name,
-    sprites: { front_default: image },
+    types,
   }) {
     this.id = id;
     this.name = name;
-    this.image = image;
+    this.image = `https://img.pokemondb.net/artwork/${name}.jpg`;
+    this.types = types.map((type) => type.type.name);
   }
 }
